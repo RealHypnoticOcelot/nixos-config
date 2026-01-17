@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 {
-	services.ucodenix = {
-		enable = true;
-	}
+  services.ucodenix = {
+    enable = true;
+  }
 }
