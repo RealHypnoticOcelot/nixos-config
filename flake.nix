@@ -21,6 +21,7 @@
 # Voila!
 #
 # I tried very hard to avoid Home Manager at first, as it's an extra layer of complexity, but it eventually became too useful to avoid.
+# I took a lot of inspiration from github:dbeley/nixos-config for the way these configs are structured.
 
 {
   description = "Basic System Configuration";
