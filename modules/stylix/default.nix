@@ -1,0 +1,7 @@
+{ userName, ... }:
+
+{
+	stylix = {
+		enable = true;
+	}
+}

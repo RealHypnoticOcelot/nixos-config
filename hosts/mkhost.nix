@@ -1,0 +1,84 @@
+{ lib, inputs, moduleProfiles, userName, hostName, systemDisk, ... }:
+
+let
+  moduleProfiles = import ./moduleprofiles.nix;
+in
+{
+  mkHost = { # The arguments that mkHost supports go below this line
+    stateVersion,
+    hostPreset,
+    system ? "x86_64-linux",
+    profiles ? [ ],
+    extraModules ? [ ],
+    extraHomeManagerModules ? [ ],
+  }:
+  let
+    systemModules = lib.flatten (
+      map (
+        profile:
+        lib.optionals (
+          moduleProfiles ? profile && moduleProfiles.${profile} ? system
+          # Checks if profile exists within moduleProfiles, then checks if moduleProfiles.{$profile}
+          # is valid, then checks if moduleProfiles.${profile} has a "system" attribute
+        ) moduleProfiles.${profile}.system
+        # If conditions are met, return moduleProfiles.{$profile}.system
+      ) profiles # The function isn't mapping TO profiles, it's mapping FROM profiles
+    );
+    # The exact same as above, I'm not sure if there's any more efficient way to do this
+    homeManagerModules = lib.flatten (
+      map (
+        profile:
+        lib.optionals (
+          moduleProfiles ? profile && moduleProfiles.${profile} ? home-manager
+        ) moduleProfiles.${profile}.home-manager
+      ) profiles
+    );
+  in
+  lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit
+        userName
+        hostName
+        inputs
+        stateVersion
+        ;
+    }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY module!
+    modules = [ # These are modules that are included in any installation, regardless of host!
+      ${hostPreset}/configuration.nix
+      ${hostPreset}/hardware-configuration.nix
+      inputs.disko.nixosModules.disko
+      { disko.devices.disk.main.device = systemDisk; }
+      "${hostPreset}/${hostPreset}.nix" # See flake.nix for more information
+      inputs.home-manager.nixosModules.home-manager
+      {
+        home-manager = {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          extraSpecialArgs = {
+            inherit
+              userName
+              system
+              inputs
+              stateVersion
+              ;
+            selectedProfiles = profiles;
+          };
+          users.${userName} = {
+            # Modules imported under here are under the USER SPACE!
+            # This is the key distinction between importing here and importing modules normally.
+            # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
+            imports = [
+              ${hostPreset}/home.nix
+            ]
+            ++ homeManagerModules 
+            ++ extraHomeManagerModules;
+          };
+        };
+      }
+    ]
+    ++ systemModules
+    ++ extraModules;
+    # Also import anything from these lists
+  };
+}

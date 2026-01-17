@@ -1,0 +1,116 @@
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  userName,
+  hostName,
+  stateVersion,
+  ...
+}:
+
+{
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # Set your time zone.
+  time.timeZone = "America/New_York";
+
+  # Configure console keymap
+  console.keyMap = "us";
+
+  # Select internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
+
+  users.mutableUsers = lib.mkDefault true; # This gets overridden if you use Impermanence
+  users.users.${userName} = {
+    isNormalUser = true;
+    description = userName;
+    extraGroups = [
+      "networkmanager" # Allows for network configuration
+      "wheel" # Allows for use of sudo
+      "video" # Allows for access to video devices(and virtual webcams, like OBS)
+    ];
+  };
+
+  networking = {
+    inherit hostName;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd"; # A modern replacement for the alternative, wpa_supplicant
+    };
+    wireless.iwd.settings = {
+      Settings = {
+        AddressRandomization = network;
+        # "network" randomizes the MAC Address upon each connection to a network. See iwd.config(5) for more details
+      }
+    }
+  };
+
+  hardware.graphics = {
+    enable32Bit = true; # Install 32-bit drivers for applications like Wine
+  };
+
+  # Enable sound with pipewire.
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true; # Kernel-level sound API
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true; # JACK Audio Connection Kit; I don't know that I have any applications that use this, but it can't hurt to enable!
+    };
+    fstrim.enable = true; # Tells SSDs when data is no longer in use, so that it can be erased and marked as free
+  };
+
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans # Chinese, Japanese, and Korean fonts
+      noto-fonts-color-emoji
+      liberation_ttf
+    ];
+  };
+
+  security = {
+    rtkit.enable = true; # Increases Pipewire performance by allowing for use of the realtime scheduler
+  };
+
+  environment.systemPackages = with pkgs; [
+    git
+  ];
+
+  programs.command-not-found.enable = true;
+  # If you run a command and it's not available, show what packages will provide that command
+
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ]; # Enable flakes!
+    };
+  };
+
+  zramSwap.enable = false;
+  # Increases RAM availability at the cost of computational power
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = stateVersion; # Did you read the comment?
+}
