@@ -17,6 +17,8 @@ in
     system = "x86_64-linux";
     profiles = [ # Presets for different applications, useful if you need to import multiple modules for one application
       "systemd-boot"
+      "disko"
+      "impermanence"
       "networking-networkmanager-iwdbackend"
       "printing"
       "pipewire"
@@ -27,7 +29,7 @@ in
       "vesktop"
     ];
     extraModules = [ # Basically just anything you'd need to import that's not a preset
-      ../modules/disko/btrfs-subvolumes.nix
+      ../modules/disko/btrfs-encrypted.nix # When using Disko, you must import the specific disk layout you want.
     ];
     extraPersist = []; # Extra directories to persist with Impermanence
   };

@@ -55,8 +55,6 @@ in
     modules = [ # These are modules that are included in any installation, regardless of host!
       ${hostPreset}/configuration.nix
       ${hostPreset}/hardware-configuration.nix
-      inputs.disko.nixosModules.disko
-      { disko.devices.disk.main.device = systemDisk; }
       "${hostPreset}/${hostPreset}.nix"
       inputs.home-manager.nixosModules.home-manager
       {

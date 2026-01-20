@@ -10,7 +10,7 @@
 
 {
   boot.loader.grub = {
+    enable = true;
     device = systemDisk;
-    useOSProber = true;
   };
 }

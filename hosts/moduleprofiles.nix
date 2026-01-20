@@ -1,4 +1,4 @@
-{ lib, inputs, username, hostname, ... }:
+{ lib, inputs, userName, hostName, systemDisk, ... }:
 
 {
   moduleProfiles = {
@@ -10,6 +10,12 @@
       home-manager = [
         inputs.sops-nix.homeManagerModules.sops
         ../modules/sops/home-manager.nix
+      ];
+    };
+    disko = {
+      system = [
+        inputs.disko.nixosModules.disko
+        { disko.devices.disk.main.device = systemDisk; }
       ];
     };
     impermanence = {
@@ -61,12 +67,12 @@
     };
     grub = {
       system = [
-        ../modules/common/bootloader/grub.nix
+        ../modules/commmon/bootloader/grub.nix
       ];
     };
     systemd-boot = {
       system = [
-        ../modules/common/bootloader/systemd-boot.nix
+        ../modules/commmon/bootloader/systemd-boot.nix
       ];
     };
   };
