@@ -13,6 +13,7 @@ in
     extraModules ? [ ],
     extraHomeManagerModules ? [ ],
     extraPersist ? [ ],
+    extraHomeManagerPersist ? [ ],
   }:
   let
     systemModules = lib.flatten (
@@ -49,13 +50,13 @@ in
         inputs
         stateVersion
         ;
-    }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY module!
+    }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY system module!
     modules = [ # These are modules that are included in any installation, regardless of host!
       ${hostPreset}/configuration.nix
       ${hostPreset}/hardware-configuration.nix
       inputs.disko.nixosModules.disko
       { disko.devices.disk.main.device = systemDisk; }
-      "${hostPreset}/${hostPreset}.nix" # See flake.nix for more information
+      "${hostPreset}/${hostPreset}.nix"
       inputs.home-manager.nixosModules.home-manager
       {
         home-manager = {
@@ -70,12 +71,14 @@ in
               ;
             selectedProfiles = profiles;
           };
+          # Anything inherited into extraSpecialArgs becomes available to ANY home-manager module(that is to say, any module imported by home-manager)!
           users.${userName} = {
             # Modules imported under here are under the USER SPACE!
             # This is the key distinction between importing here and importing modules normally.
             # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
             imports = [
               ${hostPreset}/home.nix
+              "${hostPreset}/${hostPreset}-home.nix"
             ]
             ++ homeManagerModules 
             ++ extraHomeManagerModules;

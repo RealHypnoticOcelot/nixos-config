@@ -1,7 +1,8 @@
 {
   moduleProfiles = {
     sops = {
-
+      system = [];
+      home-manage = [];
     };
     impermanence = {
     };

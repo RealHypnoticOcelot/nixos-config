@@ -4,6 +4,7 @@
   lib,
   inputs,
   userName,
+  hostName,
   ...
 }:
 

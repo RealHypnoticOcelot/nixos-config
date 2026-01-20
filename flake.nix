@@ -1,30 +1,5 @@
-# The way everything works:
-# In flake.nix, you determine your username, hostname, and the disk(as found via lsblk) to be installed on.
-# The variables set in flake.nix are passed to ./hosts/default.nix, alongside some useful inputs
-# ./hosts/default.nix calls mkHost{}, with different arguments based on what host and variables(username, hostname, and disk) you set.
-# mkhost{} is imported by ./mkhost.nix, which itself imports ./moduleprofiles.nix
-# ./moduleprofiles.nix is an attribute set, where each attribute houses two lists; a "system" and a "home-manager" list.
-# Each list contains the necessary modules in order to install the application, and Home Manager modules if applicable.
-# For example, a "discord" attribute would contain a list of system and home-manager modules necessary in order to install Discord onto the device.
-# It's not uncommon that a program can be installed and configured just via the system, or just via Home Manager.
-# The distinction is that installing via Home Manager installs for the user, whereas installing for the system, well, installs for the system!
-# For example, Impermanence affects the whole system, so you wouldn't want to enable that in a Home Manager module.
-# mkhost{} parses the attribute set in ./moduleprofiles.nix in order to include any modules specified for your host
-# ./mkhost.nix also includes modules specified in extraModules for your host
-# ./mkhost.nix also includes modules that are included in any installation, regardless of host
-# ./mkhost.nix also includes the configuration.nix and hardware-configuration.nix for your given host, which should reside in hosts/{host}
-# hosts/{host}/configuration.nix contains information like timezone and keyboard layout, which may be changed depending on the user.
-# I decided to keep those settings there instead of here in flake.nix, because they're not necessary for the system to be set up.
-# hosts/{host}/configuration.nix should NOT include settings like desktop environment! These should be configured as modules.
-# There's also a hosts/{host}/{host}.nix inside of each folder, which includes necessary settings for proper device functionality.
-# For example, the ThinkPad P14s (AMD) Gen 6 has an AMD CPU, which receives microcode updates most effectively via ucodenix, so this file would add that.
-# Voila!
-#
-# I tried very hard to avoid Home Manager at first, as it's an extra layer of complexity, but it eventually became too useful to avoid.
-# I took a lot of inspiration from github:dbeley/nixos-config for the way these configs are structured.
-
 {
-  description = "Basic System Configuration";
+  description = "System Configuration";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixos/nixpkgs/nixos-unstable";

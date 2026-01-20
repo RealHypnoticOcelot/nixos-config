@@ -6,16 +6,25 @@ in
 {
   mkPersist = {
     profiles ? [ ],
-    extraPersist ? [],
+    extraPersist ? [ ],
+    extraHomeManagerPersist ? [ ],
   }:
   let
     modulePersist = lib.flatten (
       map (
         profile:
         lib.optionals (
-          modulePersist ? profile && modulePersist.${profile}
-        ) moduleProfiles.${profile}
-      ) profiles # The function isn't mapping TO profiles, it's mapping FROM profiles
+          modulePersist ? profile && modulePersist.${profile} ? system
+        ) modulePersist.${profile}.system
+      ) profiles
+    );
+    homeManagerPersist = lib.flatten (
+      map (
+        profile:
+        lib.optionals (
+          modulePersist ? profile && modulePersist.${profile} ? home-manager
+        ) modulePersist.${profile}.home-manager
+      ) profiles
     );
   in
   environment.persistence."/persistent" {
@@ -47,9 +56,11 @@ in
         "Pictures"
         "Videos"
         "Music"
-      ];
+      ]
+      ++ homeManagerPersist
+      ++ extraHomeManagerPersist;
     };
+  };
   users.mutableUsers = lib.mkForce false;
   users.users.${userName}.hashedPasswordFile = "/persistent/passwd_${userName}";
-  };
 }

@@ -14,6 +14,9 @@
     };
     impermanence = {
       # This is handled specially in mkHost{}
+      system = [
+        inputs.impermanence.nixosModules.impermanence
+      ];
     };
     stylix = {
       system = [
@@ -46,9 +49,9 @@
         ../modules/common/printing.nix
       ];
     };
-    networking = {
+    networking-networkmanager-iwdbackend = {
       system = [
-        ../modules/common/networking.nix
+        ../modules/common/networking/networkmanager-iwdbackend.nix
       ];
     };
     pipewire = {
