@@ -59,5 +59,15 @@
         ../modules/common/pipewire.nix
       ];
     };
+    grub = {
+      system = [
+        ../modules/common/bootloader/grub.nix
+      ];
+    };
+    systemd-boot = {
+      system = [
+        ../modules/common/bootloader/systemd-boot.nix
+      ];
+    };
   };
 }

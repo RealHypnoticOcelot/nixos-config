@@ -47,6 +47,7 @@ in
       inherit
         userName
         hostName
+        systemDisk
         inputs
         stateVersion
         ;
@@ -65,6 +66,8 @@ in
           extraSpecialArgs = {
             inherit
               userName
+              hostName
+              systemDisk
               system
               inputs
               stateVersion

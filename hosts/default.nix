@@ -16,6 +16,7 @@ in
     hostPreset = "p14s-gen6-amd"; # MUST be the same as the name of the attribute
     system = "x86_64-linux";
     profiles = [ # Presets for different applications, useful if you need to import multiple modules for one application
+      "systemd-boot"
       "networking-networkmanager-iwdbackend"
       "printing"
       "pipewire"
