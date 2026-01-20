@@ -36,7 +36,7 @@ My home-grown NixOS config! I've tried my very best to make the config as modula
 - So, `mkPersist{}` will parse the profiles it's passed, and include any corresponding paths in `modulepersist.nix`.
 - `mkPersist{}` also includes directories specified by `extraPersist` for your host.
 - `mkPersist{}` also includes pre-determined directories to persist for any installation with Impermanence, regardless of host.
-- `mkPersist{}` also disables mutable users, and moves your user's hashed password file to a persistent location.
+- `mkPersist{}` also disables mutable users, and sets the location of your user's hashed password file to a persistent location.
 
 I tried very hard to avoid Home Manager at first, as it's an extra layer of complexity, but it eventually became too useful to avoid.
 
