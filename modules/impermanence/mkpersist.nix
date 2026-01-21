@@ -3,7 +3,7 @@
 let
   modulePersist = import ./modulepersist.nix;
 in
-mkPersist {
+{
   profiles ? [ ],
   extraPersist ? [ ],
   extraHomeManagerPersist ? [ ],

@@ -4,7 +4,7 @@ let
   moduleProfiles = import ./moduleprofiles.nix;
   mkPersist = import ../modules/impermanence/mkpersist.nix;
 in
-mkHost { # The arguments that mkHost supports go below this line
+{ # The arguments that mkHost supports go below this line
   stateVersion,
   hostPreset,
   system ? "x86_64-linux",
