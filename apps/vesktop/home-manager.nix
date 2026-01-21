@@ -6,9 +6,9 @@
     settings = {
       discordBranch = "canary";
     };
-    vencord.themes = [
+    vencord.themes = {
       "./themes/pesterchum.css"
-    ];
+    };
     vencord.settings = {
       plugins = {
         # Alphabetical!
