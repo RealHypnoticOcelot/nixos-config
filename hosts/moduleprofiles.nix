@@ -18,7 +18,7 @@
       ];
     };
     impermanence = {
-      # This is also handled specially in mkHost{}
+      # This is handled specially in mkHost{}
       system = [
         inputs.impermanence.nixosModules.impermanence
       ];

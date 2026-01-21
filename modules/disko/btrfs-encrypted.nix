@@ -1,4 +1,4 @@
-{ hostName, config, systemDisk, ... }:
+{ hostName, config, lib, systemDisk, ... }:
 
 {
   config = {
