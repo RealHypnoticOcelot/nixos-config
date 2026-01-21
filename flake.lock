@@ -267,12 +267,12 @@
         "home-manager": "home-manager",
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
-        "sops": "sops",
+        "sops-nix": "sops-nix",
         "stylix": "stylix",
         "ucodenix": "ucodenix"
       }
     },
-    "sops": {
+    "sops-nix": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
