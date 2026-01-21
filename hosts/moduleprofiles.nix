@@ -1,4 +1,4 @@
-{ lib, inputs, userName, hostName, systemDisk, ... }:
+{ inputs, systemDisk, ... }:
 
 {
   moduleProfiles = {
@@ -66,12 +66,22 @@
     };
     grub = {
       system = [
-        ../modules/commmon/bootloader/grub.nix
+        ../modules/common/bootloader/grub.nix
       ];
     };
     systemd-boot = {
       system = [
-        ../modules/commmon/bootloader/systemd-boot.nix
+        ../modules/common/bootloader/systemd-boot.nix
+      ];
+    };
+    steam = {
+      system = [
+        ../apps/steam
+      ];
+    };
+    obs = {
+      home-manager = [
+        ../apps/obs
       ];
     };
   };
