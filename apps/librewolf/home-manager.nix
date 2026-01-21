@@ -18,7 +18,7 @@
         Default = "Startpage";
       };
     };
-    preferences = {
+    settings = {
       # Librewolf-specific settings
       "privacy.resistFingerprinting.letterboxing" = true;
       "webgl.disabled" = false;
