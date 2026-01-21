@@ -89,6 +89,7 @@ lib.nixosSystem {
     (import ../modules/impermanence/mkpersist.nix {
       inherit inputs profiles extraPersist extraHomeManagerPersist;
     })
+    builtins.trace "Foo"
   ] else []);
   # Also import anything from these lists
 }
