@@ -25,7 +25,7 @@
       Settings = {
         AddressRandomization = network;
         # "network" randomizes the MAC Address upon each connection to a network. See iwd.config(5) for more details
-      }
-    }
+      };
+    };
   };
 }
