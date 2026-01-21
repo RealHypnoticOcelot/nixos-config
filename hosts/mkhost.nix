@@ -52,9 +52,9 @@ lib.nixosSystem {
       ;
   }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY system module!
   modules = [ # These are modules that are included in any installation, regardless of host!
-    "${hostPreset}/configuration.nix"
-    "${hostPreset}/hardware-configuration.nix"
-    "${hostPreset}/${hostPreset}.nix"
+    "./${hostPreset}/configuration.nix"
+    "./${hostPreset}/hardware-configuration.nix"
+    "./${hostPreset}/${hostPreset}.nix"
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager = {
@@ -77,8 +77,8 @@ lib.nixosSystem {
           # This is the key distinction between importing here and importing modules normally.
           # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
           imports = [
-            "${hostPreset}/home.nix"
-            "${hostPreset}/${hostPreset}-home.nix"
+            "./${hostPreset}/home.nix"
+            "./${hostPreset}/${hostPreset}-home.nix"
           ]
           ++ homeManagerModules 
           ++ extraHomeManagerModules;
