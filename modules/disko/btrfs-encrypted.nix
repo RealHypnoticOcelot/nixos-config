@@ -1,7 +1,6 @@
 { hostName, config, lib, systemDisk, ... }:
 
 {
-  options.disko.test = {};
   config = {
     boot.supportedFilesystems = [ "btrfs" ];
     disko.devices = {
