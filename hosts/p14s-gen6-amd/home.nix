@@ -8,9 +8,9 @@
 
     homeDirectory = "/home/${userName}";
 
-    # packages = with pkgs; [
-    #   # Incude any packages you'd like installed for the user!
-    # ];
+    packages = with pkgs; [
+      # Incude any packages you'd like installed for the user!
+    ];
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
