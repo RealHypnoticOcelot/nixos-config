@@ -35,6 +35,17 @@ let
       ) moduleProfiles.${profile}.home-manager
     ) profiles
   );
+  
+  impermanenceHandling =
+    if (profiles ? impermanence) then
+      mkPersist {
+        profiles = profiles;
+        extraPersist = extraPersist;
+      }
+    else
+      null;
+  # This is how we're handling Impermanence! Maybe there's a better way, but I don't know it.
+  # The idea is that we'll be receiving the list of enabled profiles, so that we can account for them 
 in
 lib.nixosSystem {
   inherit system;
@@ -85,8 +96,4 @@ lib.nixosSystem {
   ++ systemModules
   ++ extraModules;
   # Also import anything from these lists
-
-  _ = lib.optionals (profiles ? impermanence) (mkPersist { profiles = profiles; extraPersist = extraPersist; });
-  # This is how we're handling Impermanence! Maybe there's a better way, but I don't know it.
-  # The idea is that we'll be receiving the list of enabled profiles, so that we can account for them 
 }
