@@ -25,7 +25,7 @@
       "privacy.clearOnShutdown.history" = false;
       "privacy.clearOnShutdown.downloads" = false;
       # Firefox settings, put them down below this line
-    } // lib.optionalAttrs services.desktopManager.plasma6.enable { # If Plasma 6 is enabled, then include these in preferences
+    } // lib.optionalAttrs (config.programs.plasma6.enable or false) { # If Plasma 6 is enabled, then include these in preferences
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
     profiles = {
