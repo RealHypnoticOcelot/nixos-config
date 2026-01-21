@@ -72,8 +72,8 @@ lib.nixosSystem {
           # This is the key distinction between importing here and importing modules normally.
           # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
           imports = [
-            ( import ./${hostPreset}/home.nix )
-            ( import ./${hostPreset}/${hostPreset}-home.nix )
+            ( import "./${hostPreset}/home.nix" )
+            ( import "./${hostPreset}/${hostPreset}-home.nix" )
           ]
           ++ homeManagerModules 
           ++ extraHomeManagerModules;
