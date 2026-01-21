@@ -56,5 +56,5 @@
     };
   };
 
-  stylix.targets.librewolf.profilenames = [ "MainProfile" "School" ];
+  stylix.targets.librewolf.profileNames = [ "MainProfile" "School" ];
 }
