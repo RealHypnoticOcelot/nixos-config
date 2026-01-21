@@ -10,7 +10,7 @@
       proton-ge-bin # Install Proton GE
     ];
   };
-  config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  pkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steam-unwrapped"
   ];
