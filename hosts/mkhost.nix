@@ -20,7 +20,7 @@ let
     map (
       profile:
       lib.optionals (
-        moduleProfiles ? profile && moduleProfiles.${profile} ? system
+        moduleProfiles ? ${profile} && moduleProfiles.${profile} ? "system"
         # Checks if profile exists within moduleProfiles, then checks if moduleProfiles.{$profile}
         # is valid, then checks if moduleProfiles.${profile} has a "system" attribute
       ) moduleProfiles.${profile}.system
@@ -32,7 +32,7 @@ let
     map (
       profile:
       lib.optionals (
-        moduleProfiles ? profile && moduleProfiles.${profile} ? home-manager
+        moduleProfiles ? ${profile} && moduleProfiles.${profile} ? "home-manager"
       ) moduleProfiles.${profile}.home-manager
     ) profiles
   );
