@@ -20,7 +20,6 @@ in
     profiles = [ # Presets for different applications, useful if you need to import multiple modules for one application
       "systemd-boot"
       "disko"
-      "impermanence"
       "networking-networkmanager-iwdbackend"
       "printing"
       "pipewire"
