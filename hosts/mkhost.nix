@@ -53,8 +53,8 @@ in
         ;
     }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY system module!
     modules = [ # These are modules that are included in any installation, regardless of host!
-      ${hostPreset}/configuration.nix
-      ${hostPreset}/hardware-configuration.nix
+      "${hostPreset}/configuration.nix"
+      "${hostPreset}/hardware-configuration.nix"
       "${hostPreset}/${hostPreset}.nix"
       inputs.home-manager.nixosModules.home-manager
       {
