@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   avahi = {
     # Daemon that allows for automatic discovery of services on local networks
