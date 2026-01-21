@@ -78,7 +78,7 @@ in
             # This is the key distinction between importing here and importing modules normally.
             # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
             imports = [
-              ${hostPreset}/home.nix
+              "${hostPreset}/home.nix"
               "${hostPreset}/${hostPreset}-home.nix"
             ]
             ++ homeManagerModules 
