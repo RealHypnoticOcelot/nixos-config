@@ -4,91 +4,89 @@ let
   moduleProfiles = import ./moduleprofiles.nix;
   mkPersist = import ../modules/impermanence/mkpersist.nix;
 in
-{
-  mkHost = { # The arguments that mkHost supports go below this line
-    stateVersion,
-    hostPreset,
-    system ? "x86_64-linux",
-    profiles ? [ ],
-    extraModules ? [ ],
-    extraHomeManagerModules ? [ ],
-    extraPersist ? [ ],
-    extraHomeManagerPersist ? [ ],
-  }:
-  let
-    systemModules = lib.flatten (
-      map (
-        profile:
-        lib.optionals (
-          moduleProfiles ? profile && moduleProfiles.${profile} ? system
-          # Checks if profile exists within moduleProfiles, then checks if moduleProfiles.{$profile}
-          # is valid, then checks if moduleProfiles.${profile} has a "system" attribute
-        ) moduleProfiles.${profile}.system
-        # If conditions are met, return moduleProfiles.{$profile}.system
-      ) profiles # The function isn't mapping TO profiles, it's mapping FROM profiles
-    );
-    # The exact same as above, I'm not sure if there's any more efficient way to do this
-    homeManagerModules = lib.flatten (
-      map (
-        profile:
-        lib.optionals (
-          moduleProfiles ? profile && moduleProfiles.${profile} ? home-manager
-        ) moduleProfiles.${profile}.home-manager
-      ) profiles
-    );
-    
-    _ = lib.optionals (profiles ? impermanence) (mkPersist { profiles = profiles; extraPersist = extraPersist; });
-    # This is how we're handling Impermanence! Maybe there's a better way, but I don't know it.
-    # The idea is that we'll be receiving the list of enabled profiles, so that we can account for them 
-  in
-  lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit
-        userName
-        hostName
-        systemDisk
-        inputs
-        stateVersion
-        ;
-    }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY system module!
-    modules = [ # These are modules that are included in any installation, regardless of host!
-      "${hostPreset}/configuration.nix"
-      "${hostPreset}/hardware-configuration.nix"
-      "${hostPreset}/${hostPreset}.nix"
-      inputs.home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          extraSpecialArgs = {
-            inherit
-              userName
-              hostName
-              systemDisk
-              system
-              inputs
-              stateVersion
-              ;
-            selectedProfiles = profiles;
-          };
-          # Anything inherited into extraSpecialArgs becomes available to ANY home-manager module(that is to say, any module imported by home-manager)!
-          users.${userName} = {
-            # Modules imported under here are under the USER SPACE!
-            # This is the key distinction between importing here and importing modules normally.
-            # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
-            imports = [
-              "${hostPreset}/home.nix"
-              "${hostPreset}/${hostPreset}-home.nix"
-            ]
-            ++ homeManagerModules 
-            ++ extraHomeManagerModules;
-          };
+mkHost { # The arguments that mkHost supports go below this line
+  stateVersion,
+  hostPreset,
+  system ? "x86_64-linux",
+  profiles ? [ ],
+  extraModules ? [ ],
+  extraHomeManagerModules ? [ ],
+  extraPersist ? [ ],
+  extraHomeManagerPersist ? [ ],
+}:
+let
+  systemModules = lib.flatten (
+    map (
+      profile:
+      lib.optionals (
+        moduleProfiles ? profile && moduleProfiles.${profile} ? system
+        # Checks if profile exists within moduleProfiles, then checks if moduleProfiles.{$profile}
+        # is valid, then checks if moduleProfiles.${profile} has a "system" attribute
+      ) moduleProfiles.${profile}.system
+      # If conditions are met, return moduleProfiles.{$profile}.system
+    ) profiles # The function isn't mapping TO profiles, it's mapping FROM profiles
+  );
+  # The exact same as above, I'm not sure if there's any more efficient way to do this
+  homeManagerModules = lib.flatten (
+    map (
+      profile:
+      lib.optionals (
+        moduleProfiles ? profile && moduleProfiles.${profile} ? home-manager
+      ) moduleProfiles.${profile}.home-manager
+    ) profiles
+  );
+  
+  _ = lib.optionals (profiles ? impermanence) (mkPersist { profiles = profiles; extraPersist = extraPersist; });
+  # This is how we're handling Impermanence! Maybe there's a better way, but I don't know it.
+  # The idea is that we'll be receiving the list of enabled profiles, so that we can account for them 
+in
+lib.nixosSystem {
+  inherit system;
+  specialArgs = {
+    inherit
+      userName
+      hostName
+      systemDisk
+      inputs
+      stateVersion
+      ;
+  }; # By inheriting something into specialArgs, you make that value able to be referenced globally by ANY system module!
+  modules = [ # These are modules that are included in any installation, regardless of host!
+    "${hostPreset}/configuration.nix"
+    "${hostPreset}/hardware-configuration.nix"
+    "${hostPreset}/${hostPreset}.nix"
+    inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        extraSpecialArgs = {
+          inherit
+            userName
+            hostName
+            systemDisk
+            system
+            inputs
+            stateVersion
+            ;
+          selectedProfiles = profiles;
         };
-      }
-    ]
-    ++ systemModules
-    ++ extraModules;
-    # Also import anything from these lists
-  };
+        # Anything inherited into extraSpecialArgs becomes available to ANY home-manager module(that is to say, any module imported by home-manager)!
+        users.${userName} = {
+          # Modules imported under here are under the USER SPACE!
+          # This is the key distinction between importing here and importing modules normally.
+          # If you enable a program, for instance, it'll be enabled for that user instead of system-wide.
+          imports = [
+            "${hostPreset}/home.nix"
+            "${hostPreset}/${hostPreset}-home.nix"
+          ]
+          ++ homeManagerModules 
+          ++ extraHomeManagerModules;
+        };
+      };
+    }
+  ]
+  ++ systemModules
+  ++ extraModules;
+  # Also import anything from these lists
 }
