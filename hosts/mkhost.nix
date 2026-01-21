@@ -53,8 +53,8 @@ lib.nixosSystem {
     inputs.home-manager.nixosModules.home-manager
     {
       home-manager = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
+        useGlobalPkgs = true;
+        useUserPackages = true;
         extraSpecialArgs = {
           inherit
             userName
@@ -75,7 +75,7 @@ lib.nixosSystem {
             ( import ./${hostPreset}/home.nix )
             ( import ./${hostPreset}/${hostPreset}-home.nix )
           ]
-          ++ homeManagerModules 
+          ++ homeManagerModules
           ++ extraHomeManagerModules;
         };
       };
