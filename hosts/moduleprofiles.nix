@@ -15,7 +15,7 @@
     disko = {
       system = [
         inputs.disko.nixosModules.disko
-        { disko.devices.disk.main.device = systemDisk; }
+        { inputs.disko.devices.disk.main.device = systemDisk; }
       ];
     };
     impermanence = {
