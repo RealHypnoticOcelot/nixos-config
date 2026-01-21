@@ -2,7 +2,7 @@
   description = "System Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     ucodenix.url = "github:e-tho/ucodenix";
     disko = {
       url = "github:nix-community/disko";
