@@ -8,7 +8,9 @@
 }:
 
 let
-  mkHost = import ./mkhost.nix; #mkHost is the function that generates the system using the profiles and modules we specify
+  mkHost = import ./mkhost.nix {
+    inherit lib inputs userName hostName systemDisk;
+  }; #mkHost is the function that generates the system using the profiles and modules we specify
 in
 {
   p14s-gen6-amd = mkHost {
