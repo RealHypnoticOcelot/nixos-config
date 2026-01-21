@@ -71,5 +71,5 @@
       };
       enabledThemes = [ "pesterchum.css" ];
     };
-  }
+  };
 }
