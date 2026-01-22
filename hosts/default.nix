@@ -42,6 +42,7 @@ in
     profiles = [ # Presets for different applications, see moduleprofiles.nix to see what available profiles and what they import
     # These are imported in order!
       "systemd-boot"
+      "disko"
       "impermanence"
       "networking-networkmanager-iwdbackend"
       "printing"
