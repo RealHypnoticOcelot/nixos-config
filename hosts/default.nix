@@ -20,6 +20,7 @@ in
   disko-partition-grub = lib.nixosSystem {
     specialArgs = { inherit hostName systemDisk; };
     modules = [
+      inputs.disko.nixosModules.disko
       ../modules/common/bootloader/grub.nix
       ../modules/disko/${diskFormat}.nix
       /etc/nixos/hardware-configuration.nix
@@ -28,6 +29,7 @@ in
   disko-partition-systemd-boot = lib.nixosSystem {
     specialArgs = { inherit hostName systemDisk; };
     modules = [
+      inputs.disko.nixosModules.disko
       ../modules/common/bootloader/systemd-boot.nix
       ../modules/disko/${diskFormat}.nix
       /etc/nixos/hardware-configuration.nix
