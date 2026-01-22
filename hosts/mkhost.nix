@@ -8,7 +8,6 @@ in
 { # The arguments that mkHost supports go below this line
   stateVersion,
   hostPreset,
-  system ? "x86_64-linux",
   profiles ? [ ],
   extraModules ? [ ],
   extraHomeManagerModules ? [ ],
@@ -38,7 +37,6 @@ let
   );
 in
 lib.nixosSystem {
-  inherit system;
   specialArgs = {
     inherit
       userName
@@ -62,7 +60,6 @@ lib.nixosSystem {
             userName
             hostName
             systemDisk
-            system
             inputs
             stateVersion
             ;
@@ -85,7 +82,7 @@ lib.nixosSystem {
   ]
   ++ systemModules
   ++ extraModules
-  ++ (if profiles ? "impermanence" then [ # If impermanence is one of the profiles, import the module that handles it specially
+  ++ (if systemModules ? "impermanence" then [ # If impermanence is one of the profiles, import the module that handles it specially
     (import ../modules/impermanence/mkpersist.nix {
       inherit inputs profiles extraPersist extraHomeManagerPersist;
     })

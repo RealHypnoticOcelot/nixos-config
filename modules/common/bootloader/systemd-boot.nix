@@ -2,9 +2,6 @@
   config,
   pkgs,
   lib,
-  inputs,
-  userName,
-  hostName,
   systemDisk,
   ...
 }:
