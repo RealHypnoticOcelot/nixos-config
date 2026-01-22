@@ -1,5 +1,5 @@
 { lib, inputs, userName, profiles, extraPersist, extraHomeManagerPersist, ... }:
-asdkajhakj
+
 let
   modulePersist = import ./modulepersist.nix;
   modulePersist = lib.flatten (
