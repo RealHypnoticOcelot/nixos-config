@@ -4,6 +4,7 @@
   userName,
   hostName,
   systemDisk,
+  diskFormat,
   ...
 }:
 
