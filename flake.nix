@@ -41,7 +41,7 @@
     userName = "hypnoticocelot";
     hostName = "hypnoticocelot-p14s";
     systemDisk = "/dev/nvme0n1";
-    diskFormat = "btrfs-encrypted";
+    diskFormat = "btrfs-encrypted"; # Select any of ./modules/disko/{diskFormat}.nix
   in {
     nixosConfigurations = import ./hosts { # Shorthand for ./hosts/default.nix
       inherit nixpkgs inputs; # ./hosts/default.nix will now be able to reference nixpkgs and inputs! Also inputs.disko, inputs.sops, etc.

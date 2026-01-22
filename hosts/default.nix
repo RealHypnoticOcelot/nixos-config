@@ -34,10 +34,12 @@ in
       ];
     };
   };
+  # Normal hosts(follow this )
   p14s-gen6-amd = mkHost {
     stateVersion = "25.11";
     hostPreset = "p14s-gen6-amd"; # Determines which hosts/{host} folder you import from
-    profiles = [ # Presets for different applications, useful if you need to import multiple modules for one application
+    profiles = [ # Presets for different applications, see moduleprofiles.nix to see what available profiles and what they import
+    # These are imported in order!
       "systemd-boot"
       "disko"
       "impermanence"
@@ -50,8 +52,9 @@ in
       "librewolf"
       "vesktop"
     ];
-    extraModules = [ # Basically just anything you'd need to import that's not a preset
-    ];
+    extraModules = []; # Basically just anything you'd need to import that's not a preset
+    extraHomeManagerModules = []; # The same, but for Home Manager
     extraPersist = []; # Extra directories to persist with Impermanence
+    extraHomeManagerPersist = []; # To be honest, I don't know that this is necessary, but it doesn't hurt to have
   };
 }
