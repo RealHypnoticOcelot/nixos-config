@@ -82,8 +82,8 @@ lib.nixosSystem {
   ]
   ++ systemModules
   ++ extraModules
-  ++ lib.optional (systemModules ? "impermanence") [
+  ++ lib.optional (lib.elem "impermanence" systemModules) (
     ../modules/impermanence/mkpersist.nix { inherit inputs profiles extraPersist extraHomeManagerPersist; }
-  ];
+  );
   # Also import anything from these lists
 }
