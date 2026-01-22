@@ -13,24 +13,6 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/nix" =
-    { device = "/dev/mapper/root_vg_hypnoticocelot-p14s";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
-
-  fileSystems."/persistent" =
-    { device = "/dev/mapper/root_vg_hypnoticocelot-p14s";
-      fsType = "btrfs";
-      options = [ "subvol=persistent" ];
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2849-A4CB";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
