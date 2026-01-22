@@ -25,7 +25,7 @@ in
       "printing"
       "pipewire"
       "sops"
-      # "stylix"
+      "stylix"
       "ucodenix"
       "librewolf"
       "vesktop"
