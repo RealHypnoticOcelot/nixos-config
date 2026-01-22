@@ -16,8 +16,8 @@ in
 {
   disko-partition = mkHost {
     stateVersion = "25.11";
-    hostPreset = "p14s-gen6-amd";
-    profiles = [ "disko" ];
+    hostPreset = "p14s-gen6-amd"; # I'm just going to leave it like this, since it has negligible effect on the partitioning process
+    profiles = [ "disko" "systemd-boot" ];
     extraModules = [
       ../modules/disko/${diskFormat}.nix
     ];
@@ -40,7 +40,7 @@ in
       "vesktop"
     ];
     extraModules = [ # Basically just anything you'd need to import that's not a preset
-      ../modules/disko/${diskFormat}.nix # When using Disko, you must import the specific disk layout you want.
+      ../modules/disko/${diskFormat}.nix # When using Disko, you must import the specific disk layout you selected when partitioning.
     ];
     extraPersist = []; # Extra directories to persist with Impermanence
   };
