@@ -4,8 +4,8 @@
     autoEnable = false;
     targets = {
       hyprland = {
-        # enable = true;
-        # colors.enable = false;
+        enable = true;
+        colors.enable = false;
         hyprpaper.enable = true;
       };
     };
