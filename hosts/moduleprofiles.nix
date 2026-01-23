@@ -119,4 +119,54 @@
       ../modules/common/brightness.nix
     ];
   };
+  xdg-desktop-portal = {
+    system = [
+      ../modules/common/xdg-desktop-portal.nix
+    ];
+  };
+  mako = {
+    home-manager = [
+      ../apps/mako/home-manager.nix
+    ];
+  };
+  hyprpolkitagent = {
+    home-manager = [
+      ../apps/hyprpolkitagent/home-manager.nix
+    ];
+  };
+  hypridle = {
+    home-manager = [
+      ../apps/hypridle/home-manager.nix
+    ];
+  };
+  regreet = {
+    system = [
+      ../modules/common/window-system/display-manager/regreet.nix
+    ];
+  };
+  hyprlauncher = {
+    home-manager = [
+      ../apps/hyprlauncher/home-manager.nix
+    ];
+  };
+  hyprlock = {
+    home-manager = [
+      ../apps/hyprlock/home-manager.nix
+    ];
+  };
+  copyq = {
+    home-manager = [
+      ../apps/copyq/home-manager.nix
+    ];
+  };
+  waybar = {
+    home-manager = [
+      ../apps/waybar/home-manager.nix
+    ];
+  };
+  dolphin = {
+    system = [
+      ../apps/dolphin
+    ];
+  };
 }
