@@ -9,7 +9,7 @@
       # Startup Apps
       exec-once = [];
       windowrule = [
-        "float, class:.*" # All windows float, please!
+        "float on, class:.*" # All windows float, please!
       ];
       bind = [
         "$mod, space, exec, hyprlauncher"

@@ -1,8 +1,17 @@
-{ lib, inputs, userName, profiles, extraPersist, extraHomeManagerPersist, ... }:
+{ lib, inputs, profiles, extraPersist, extraHomeManagerPersist, ... }:
 
 let
-  modulePersist = import ./modulepersist.nix;
-  modulePersist = lib.flatten (
+  modulePersist = (import ./modulepersist.nix {
+    inherit lib inputs diskFormat;
+  });
+in
+{
+  profiles,
+  extraPersist ? [ ],
+  extraHomeManagerPersist ? [ ],
+}:
+let
+  systemPersist = lib.flatten (
     map (
       profile:
       lib.optionals (
@@ -34,7 +43,7 @@ in
       # /etc is where configuration files live!
       "/etc/nixos" # NixOS configs, like the file you're looking at right now!
     ]
-    ++ modulePersist
+    ++ systemPersist
     ++ extraPersist;
     files = [
       "/etc/machine-id" # A unique device ID generated upon first boot, useful for identifying devices even after hardware changes

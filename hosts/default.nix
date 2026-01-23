@@ -54,6 +54,7 @@ in
       "copyq"
       "xdg-desktop-portal"
       "mako"
+      "kitty"
       "waybar"
       "dolphin"
       "sops"
