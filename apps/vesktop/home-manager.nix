@@ -57,8 +57,8 @@
                   "766857547155636224"
                 ];
               }
-            ]
-          }
+            ];
+          };
         };
         ReplaceGoogleSearch = {
           enabled = true;
