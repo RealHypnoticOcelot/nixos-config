@@ -18,6 +18,9 @@ cd /tmp
 git clone https://github.com/realhypnoticocelot/hypnix
 cd hypnix
 
+# (If applicable) Modify flake.nix to change userName and hostName, and set systemDisk and diskFormat.
+nano flake.nix
+
 # Run the flake! Make sure to choose either grub or systemd-boot, depending on which bootloader you want, and to replace {systemDisk} with the disk you're installing onto.
 sudo nix --extra-experimental-features 'nix-command flakes' run 'github:nix-community/disko/latest#disko-install' -- --flake .#disko-partition-{grub|systemd-boot} --disk main {systemDisk} --show-trace
 ```
