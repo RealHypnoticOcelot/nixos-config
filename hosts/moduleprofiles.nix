@@ -119,4 +119,9 @@
       ../modules/common/window-system/display-manager/sddm-wayland.nix
     ];
   };
+  brightness = {
+    home-manager = [
+      ../modules/common/brightness.nix
+    ]
+  }
 }
