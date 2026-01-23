@@ -55,9 +55,9 @@ nix-shell --extra-experimental-features flakes -p git
 # Clone this repository into the current working directory.
 git clone https://github.com/realhypnoticocelot/hypnix .
 # Build!
-sudo nixos-rebuild switch --flake .#{host}
+sudo nixos-rebuild boot --flake .#{host}
 ```
-Reboot, or it might automatically reboot, and you'll have your fresh new system!
+Reboot, and you'll have your fresh new system!
 
 ### 3. Post-install
 
