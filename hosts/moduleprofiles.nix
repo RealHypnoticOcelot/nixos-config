@@ -116,7 +116,7 @@
   };
   sddm-wayland = {
     system = [
-      ../modules/common/window-system/display-manager/sddm-xserver.nix
+      ../modules/common/window-system/display-manager/sddm-wayland.nix
     ];
   };
 }
