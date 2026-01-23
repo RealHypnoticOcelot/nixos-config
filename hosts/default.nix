@@ -43,7 +43,7 @@ in
     # These are imported in order!
       "systemd-boot"
       "disko"
-      "sddm"
+      "sddm-wayland"
       "hyprland"
       "networking-networkmanager-iwdbackend"
       "printing"
