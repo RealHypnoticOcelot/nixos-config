@@ -52,6 +52,7 @@ in
       "hyprlock"
       "regreet"
       "copyq"
+      "xdg-desktop-portal"
       "mako"
       "waybar"
       "dolphin"

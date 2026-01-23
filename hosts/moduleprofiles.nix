@@ -119,6 +119,11 @@
       ../modules/common/brightness.nix
     ];
   };
+  xdg-desktop-portal = {
+    system = [
+      ../modules/common/xdg-desktop-portal.nix
+    ];
+  };
   mako = {
     home-manager = [
       ../apps/mako/home-manager.nix

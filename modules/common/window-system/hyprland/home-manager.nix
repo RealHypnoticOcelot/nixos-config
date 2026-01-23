@@ -11,9 +11,8 @@
         "waybar"
       ];
     };
-    xdg.portal = { # For screensharing; not enabling it, just adding the package in case it is enabled
-      enable = true;
-      extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
-    };
+  };
+  xdg.portal = { # For screensharing; not enabling it, just adding the package in case it is enabled
+    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 }
