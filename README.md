@@ -59,7 +59,11 @@ sudo nixos-rebuild switch --flake .#{host}
 ```
 Reboot, or it might automatically reboot, and you'll have your fresh new system!
 
+### 3. Post-install
+
 At this point, your main user will not have any password available to it. You'll need to log in as root once more(if you're using a display manager, you'll have to open a TTY for this), and run `passwd {userName}`. Set the password and go back to business!
+
+You'll also want to run `chown -R 1000:1000 /etc/nixos` to have your config's permissions given to the primary user.
 
 ## How everything works:
 
