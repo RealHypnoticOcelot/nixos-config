@@ -32,7 +32,7 @@ sudo mount -o subvol=persistent /dev/mapper/root_vg_hypnoticocelot-p14s /mnt/per
 sudo mount -o subvol=nix /dev/mapper/root_vg_hypnoticocelot-p14s /mnt/nix
 ```
 You can find what partition name to use in place of `root_vg_hypnoticocelot-p14s` by running `lsblk` and viewing the partition your LUKS-encrypted volume is on.
-If you're creating an unencrypted disk, you can just mount the partition directly instead of doing all of this subvolume nonsense. For example:
+**If you're creating an unencrypted disk**, you can just mount the partition directly instead of doing all of this subvolume nonsense. For example:
 ```
 sudo mount /dev/nvme0n1p2 /mnt
 ```
