@@ -1,4 +1,4 @@
-{ inputs, diskFormat, ... }:
+{ lib, inputs, diskFormat, ... }:
 
 {
   sops = {

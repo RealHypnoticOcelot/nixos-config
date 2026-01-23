@@ -2,7 +2,7 @@
 
 let
   moduleProfiles = (import ./moduleprofiles.nix {
-    inherit inputs diskFormat;
+    inherit lib inputs diskFormat;
   });
 in
 { # The arguments that mkHost supports go below this line
