@@ -109,4 +109,9 @@
       ../apps/kitty/home-manager.nix
     ];
   };
+  sddm = {
+    system = [
+      ../modules/common/window-system/display-manager/sddm.nix
+    ]
+  }
 }
