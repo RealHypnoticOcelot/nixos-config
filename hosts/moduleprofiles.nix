@@ -79,6 +79,9 @@
     ];
   };
   easyeffects = {
+    default = [
+      ../apps/easyeffects
+    ];
     home-manager = [
       ../apps/easyeffects/home-manager.nix
     ];
