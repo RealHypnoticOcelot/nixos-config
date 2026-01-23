@@ -6,10 +6,6 @@
       inputs.sops-nix.nixosModules.sops
       ../modules/sops
     ];
-    home-manager = [
-      inputs.sops-nix.homeManagerModules.sops
-      ../modules/sops/home-manager.nix
-    ];
   };
   disko = {
     system = [
