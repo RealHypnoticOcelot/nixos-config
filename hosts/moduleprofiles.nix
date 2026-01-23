@@ -101,4 +101,9 @@
       ../modules/common/window-system/hyprland/home-manager.nix
     ];
   };
+  kitty = {
+    home-manager = [
+      ../apps/kitty/home-manager.nix
+    ]
+  }
 }
