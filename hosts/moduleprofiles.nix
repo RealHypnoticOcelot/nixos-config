@@ -104,6 +104,6 @@
   kitty = {
     home-manager = [
       ../apps/kitty/home-manager.nix
-    ]
-  }
+    ];
+  };
 }
