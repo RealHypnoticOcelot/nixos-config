@@ -47,7 +47,6 @@
           pinOrder = 1;
           # 1 = Custom: Allows rearranging the order of your pinned DMs
           # I believe with drop-down options, you select a zero-indexed option number(so the first option would be 0, the next would be 1, etc.)
-          pinnedDMs = "1172645088925585520,766857547155636224";
           userBasedCategoryList = {
             "404053132910395393" = [ # Your user ID
               {
