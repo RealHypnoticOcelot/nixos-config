@@ -60,7 +60,6 @@
     git
   ];
 
-  programs.command-not-found.enable = true; # If you run a command and it's not available, show what packages will provide that command
   services.fstrim.enable = true; # Tells SSDs when data is no longer in use, so that it can be erased and marked as free
   zramSwap.enable = false; # Increases RAM availability at the cost of computational power
 
