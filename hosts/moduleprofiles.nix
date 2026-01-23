@@ -122,6 +122,6 @@
   brightness = {
     home-manager = [
       ../modules/common/brightness.nix
-    ]
-  }
+    ];
+  };
 }
