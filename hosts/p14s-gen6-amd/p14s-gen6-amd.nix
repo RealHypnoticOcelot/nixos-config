@@ -18,9 +18,13 @@
   ];
   systemd.services.alsaMicrophone = { # Creates systemd service that disables Auto-Mute Mode on the microphone on sound card 1, automatically on boot
     enable = true;
-    script = ''
-      amixer -c 1 set "Auto-Mute Mode" Disabled
-    '';
+    script = lib.getExe(pkgs.writeShellApplication {
+        name = "fix-auto-mute";
+        runtimeInputs = with pkgs; [alsa-utils];
+        text = ''
+          amixer -c 1 set "Auto-Mute Mode" Disabled
+        '';
+    });
     wantedBy = [ "multi-user.target" ];
   };
 }
