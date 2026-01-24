@@ -1,4 +1,4 @@
-{ userName, ... }:
+{ userName, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
     sops
