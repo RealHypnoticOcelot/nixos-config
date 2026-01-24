@@ -10,6 +10,7 @@
       exec-once = [];
       windowrule = [
         "match:class .*, float on" # All windows float, please!
+        "match:title .*, float on"
       ];
       bind = [
         "$mod, space, exec, hyprlauncher"
