@@ -63,7 +63,7 @@ in
       "pipewire"
       "brightness"
       "ucodenix"
-      # "librewolf"
+      "librewolf"
       "vesktop"
       "obs"
       "easyeffects"
