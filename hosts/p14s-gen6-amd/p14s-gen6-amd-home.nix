@@ -16,14 +16,14 @@
         # xf86bluetooth
         # xf86keyboard
         # xf86tools
-        ", xf86audiomicmute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && brightnessctl -d 'platform::micmute' s $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 1 || echo 0)"
+        ", xf86audiomicmute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && brightnessctl -d 'platform::micmute' s $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 1 || echo 0)" # Also toggles the LED to match the mute state
         # xf86display
         # xf86wlan
         # xf86messenger
         # xf86go
         # cancel
         # xf86favorites
-        ", xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && && brightnessctl -d 'platform::mute' s $(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q MUTED && echo 1 || echo 0)"
         ", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
         "SHIFT, xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
         ", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
