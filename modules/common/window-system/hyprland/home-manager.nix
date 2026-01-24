@@ -25,11 +25,11 @@
         # xf86go
         # cancel
         # xf86favorites
-        # xf86audiomute
-        # xf86audiolowervolume
-        # "SHIFT, xf86audiolowervolume
-        # xf86audioraisevolume
-        # "SHIFT, xf86audioraisevolume
+        ", xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ", xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
+        "SHIFT, xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"
+        ", xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"
+        "SHIFT, xf86audioraisevolume, wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"
         ", xf86monbrightnessdown, exec, brightnessctl s 5%-"
         ", xf86monbrightnessup, exec, brightnessctl s +5%"
       ];
