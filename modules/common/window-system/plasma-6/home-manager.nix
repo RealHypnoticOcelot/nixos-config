@@ -12,5 +12,8 @@
     settings = {
       "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
+    nativeMessagingHosts = [
+      kdePackages.plasma-browser-integration # Make the plasma browser integration package available to extensions
+    ];
   };
 }
