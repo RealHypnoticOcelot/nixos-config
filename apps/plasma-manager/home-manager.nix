@@ -44,6 +44,12 @@
             ];
           };
         }
+        {
+          digitalClock = {
+            calendar.firstDayOfWeek = "sunday";
+            time.format = "12h";
+          };
+        }
       ]
     };
   };
