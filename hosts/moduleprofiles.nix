@@ -97,7 +97,7 @@
     ];
     home-manager = [
       ../modules/common/window-system/plasma-6/home-manager.nix
-    ]
+    ];
   };
   hyprland = {
     system = [
