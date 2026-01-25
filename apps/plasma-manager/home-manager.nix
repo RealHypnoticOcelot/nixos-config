@@ -65,5 +65,9 @@
         ];
       }
     ];
+    powerdevil = {
+      battery.dimDisplay.idleTimeout = 900; # In seconds
+      battery.turnOffDisplay.idleTimeout = 1800; # In seconds
+    }
   };
 }
