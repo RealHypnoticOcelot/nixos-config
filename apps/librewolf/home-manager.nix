@@ -66,6 +66,9 @@
       };
       "School" = {
         id = 1;
+        settings = {
+          "browser.toolbars.bookmarks.visibility" = "newtab"; # When to show bookmarks toolbar
+        };
       };
     };
   };

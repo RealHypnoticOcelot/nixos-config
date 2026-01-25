@@ -30,6 +30,7 @@
                   "applications:librewolf.desktop"
                   "applications:org.kde.dolphin.desktop"
                   "applications:steam.desktop"
+                  "applications:vesktop.desktop"
                 ];
               };
             };
@@ -39,16 +40,20 @@
           }
           {
             systemTray.items = {
-              # We explicitly show bluetooth and battery
+              # Explicitly show
               shown = [
                 "org.kde.plasma.battery"
-                "org.kde.plasma.bluetooth"
-              ];
-              # And explicitly hide networkmanagement and volume
-              hidden = [
+                "org.kde.plasma.clipboard"
                 "org.kde.plasma.networkmanagement"
                 "org.kde.plasma.volume"
+                "org.kde.plasma.brightness"
+                "org.kde.kdeconnect"
               ];
+              # Explicitly hide
+              hidden = [
+                #
+              ];
+              configs.battery.showPercentage = true;
             };
           }
           {
