@@ -194,4 +194,10 @@
       ../apps/plasma-manager/home-manager.nix
     ];
   };
+  nix-flatpak = {
+    home-manager = [
+      homeManagerModules.nix-flatpak
+      ../apps/nix-flatpak/home-manager.nix
+    ]
+  }
 }
