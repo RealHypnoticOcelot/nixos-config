@@ -38,7 +38,11 @@
           installation_mode = "force_installed";
           default_area = "navbar";
         };
-        "plasma-browser-integration@kde.org" # Plasma Browser Integration
+        "plasma-browser-integration@kde.org" = { # Plasma Browser Integration
+          install_url = "https://addons.mozilla.org/firefox/downloads/latest/plasma-integration/latest.xpi";
+          installation_mode = "force_installed";
+          default_area = "menupanel";
+        }
       };
       DisplayBookmarksToolbar = "never";
     };
