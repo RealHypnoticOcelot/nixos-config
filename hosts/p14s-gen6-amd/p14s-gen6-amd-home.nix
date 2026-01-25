@@ -37,7 +37,7 @@
     hotkeys.commands."mute-microphone" = {
       name = "Mute Microphone patch for P14S";
       key = "Mute Microphone";
-      command = "\"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && brightnessctl -d 'platform::micmute' s $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 1 || echo 0)\"";
+      command = "\"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && brightnessctl -d 'platform::micmute' s $(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 1 || echo 0)";
     };
   };
 }
