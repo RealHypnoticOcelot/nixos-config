@@ -196,7 +196,7 @@
   };
   nix-flatpak = {
     home-manager = [
-      homeManagerModules.nix-flatpak
+      inputs.homeManagerModules.nix-flatpak
       ../apps/nix-flatpak/home-manager.nix
     ];
   };
