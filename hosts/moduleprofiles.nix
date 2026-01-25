@@ -191,6 +191,7 @@
   plasma-manager = {
     home-manager = [
       inputs.plasma-manager.homeModules.plasma-manager
+      ../apps/plasma-manager.home-manager.nix
     ];
   };
 }
