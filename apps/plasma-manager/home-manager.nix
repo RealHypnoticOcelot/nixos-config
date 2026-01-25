@@ -29,8 +29,8 @@
                 "applications:librewolf.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:steam.desktop"
-              ]
-            }
+              ];
+            };
           };
         }
         {
