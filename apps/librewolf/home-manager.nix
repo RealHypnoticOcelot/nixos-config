@@ -38,11 +38,6 @@
           installation_mode = "force_installed";
           default_area = "navbar";
         };
-        "plasma-browser-integration@kde.org" = { # Plasma Browser Integration
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/plasma-integration/latest.xpi";
-          installation_mode = "force_installed";
-          default_area = "menupanel";
-        };
       };
       DisplayBookmarksToolbar = "never";
     };
@@ -64,8 +59,6 @@
       "browser.urlbar.suggest.topsites" = false;
       "browser.search.separatePrivateDefault" = false; # Whether to use a different search engine for private search
       "browser.tabs.loadinBackground" = false; # Set FALSE to switch to newly-opened links, and TRUE to not
-    } // lib.optionalAttrs (config.programs.desktopManager.plasma6.enable or false) { # If Plasma 6 is enabled, then include these in preferences
-      "widget.use-xdg-desktop-portal.file-picker" = 1;
     };
     profiles = {
       "MainProfile" = {
