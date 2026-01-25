@@ -48,7 +48,6 @@ in
       "stylix"
       "sddm"
       "plasma-6"
-      "xdg-desktop-portal"
       "networking-networkmanager-iwdbackend"
       "printing"
       "pipewire"
