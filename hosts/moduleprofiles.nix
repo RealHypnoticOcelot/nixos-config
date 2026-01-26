@@ -208,4 +208,9 @@
       ../apps/feishin/home-manager.nix
     ];
   };
+  vicinae = {
+    home-manager = [
+      ../apps/vicinae/home-manager.nix
+    ]
+  }
 }
