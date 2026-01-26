@@ -203,4 +203,9 @@
       ../apps/declarative-flatpak/home-manager.nix
     ];
   };
+  feishin = {
+    home-manager = [
+      ../apps/feishin/home-manager.nix
+    ]
+  }
 }
