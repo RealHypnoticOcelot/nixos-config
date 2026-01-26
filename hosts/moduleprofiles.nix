@@ -213,4 +213,9 @@
       ../apps/vicinae/home-manager.nix
     ];
   };
+  prism-launcher = {
+    home-manager = [
+      ../apps/prism-launcher/home-manager.nix
+    ]
+  }
 }
