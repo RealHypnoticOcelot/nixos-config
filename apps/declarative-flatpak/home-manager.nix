@@ -8,6 +8,7 @@
     };
     packages = [
       "flathub:app/org.vinegarhq.Sober//stable"
+      "flathub:app/org.kde.filelight.desktop//stable"
     ];
   };
   xdg = {
