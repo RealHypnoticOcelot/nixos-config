@@ -7,7 +7,7 @@
       "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
     };
     packages = [
-      "org.vinegarhq.Sober"
+      "flathub:app/org.vinegarhq.Sober"
     ];
   };
 }
