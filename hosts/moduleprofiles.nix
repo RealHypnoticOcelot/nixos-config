@@ -223,4 +223,19 @@
       ../apps/libreoffice-qt/home-manager.nix
     ];
   };
+  kdenlive = {
+    home-manager = [
+      ../apps/kdenlive/home-manager.nix
+    ];
+  };
+  filelight = {
+    home-manager = [
+      ../apps/filelight/home-manager.nix
+    ];
+  };
+  merkuro = {
+    home-manager = [
+      ../apps/merkuro/home-manager.nix
+    ]
+  }
 }
