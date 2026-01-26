@@ -1,5 +1,5 @@
 {
-  programs.thunderbid = {
+  programs.thunderbird = {
     enable = true;
   };
 }
