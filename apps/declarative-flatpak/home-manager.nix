@@ -14,6 +14,6 @@
     enable = true;
     systemDirs.data = [
       "~/.local/share/flatpak/exports/share"
-    ]
-  }
+    ];
+  };
 }
