@@ -1,4 +1,4 @@
-{ pkgs, userName, stateVersion, ... }:
+{ pkgs, userName, stateVersion, config, ... }:
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

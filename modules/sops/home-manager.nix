@@ -1,4 +1,4 @@
-{ userName, config, ... }:
+{ userName, ... }:
 {
   sops = {
     defaultSopsFile = ../../secrets/secrets.yaml; # Secrets encrypted with the public key
