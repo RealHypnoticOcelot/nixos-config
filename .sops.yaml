@@ -1,6 +1,7 @@
 keys:
   - &primary age1wnd4g3w0gncxzdaxqcjd7kavcezzcja0dgldkkhwkzy98jznldys59avel
-  # This is where you put the PUBLIC key, and asign it to a key group
+  # This is where you put the PUBLIC key, and assign it to a key group.
+  # The private key lives in ~/.config/sops/age/key.txt
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
