@@ -43,8 +43,8 @@
             config = {
               General = {
                 showPercentage = true;
-              }
-            }
+              };
+            };
           }
           {
             systemTray.items = {
