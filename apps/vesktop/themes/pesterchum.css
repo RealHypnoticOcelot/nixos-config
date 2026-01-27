@@ -1451,7 +1451,7 @@ https://syndishanx.github.io/Website/Update_Classes.html when the theme is looki
   fill: white;
 }
 
-#app-mount .wrapper__44b0c .pointerEvents__44b0c[x="14.5"] {
+#app-mount .wrapper__44b0c .pointerEvents__44b0c[x="14.5"] { /* Fixes alignment of typing indicator in member list */
   x: 0px;
   y: 0px;
 }
