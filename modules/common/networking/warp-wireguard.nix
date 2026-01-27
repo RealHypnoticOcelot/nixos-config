@@ -2,7 +2,6 @@
 
 {
   networking.wg-quick = {
-    enable = true;
     interfaces = {
       warp = {
         privateKeyFile = config.sops.secrets.wgcf_privatekey.path;
