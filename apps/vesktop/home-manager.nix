@@ -9,6 +9,7 @@
       tray = false; # Whether to have a tray icon
       minimizeToTray = false;
       appBadge = false; # Badge on the app icon that indicates notification amount
+      hardwareVideoAcceleration = true;
     };
     vencord.themes = {
       "Pesterchum" = ./themes/pesterchum.css;
