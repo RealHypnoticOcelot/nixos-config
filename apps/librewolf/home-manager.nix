@@ -16,7 +16,7 @@
           {
             Name = "Startpage";
             Description = "Startpage Search";
-            URLTemplate = "https://www.startpage.com/sp/search?query={searchTerms}&prfe=d05529b22695d9b21ff0bfe3d59b0435c473b251863471092ba162b9a294373c050a20e9412164b63e1334d4b1fc2d4580f9085c3c08441b6809c72c78d039363453dbf0f832bdceebc83f234de3";
+            URLTemplate = "https://www.startpage.com/sp/search?query={searchTerms}&prfe=6419af721e37d90b9602249d42ea246ece39b1011e1bea0fcf1d100ebe0a547dd4cfd4f119c410a6d62282183f17e7eba737af8354ab335d03b384f979fc3806c08c462db7525270b8a381b5eeb9";
             # REALLY long, but this contains user preferences! Now, when we search, theme and everything will always be set by default.
             Method = "GET";
             IconURL = "https://www.startpage.com/favicon.ico";
