@@ -20,6 +20,9 @@
     networkmanager = {
       enable = true;
       wifi.backend = "wpa_supplicant"; # iwd is a modern replacement for the alternative, wpa_supplicant
+      # NetworkManager cannot auto-generate provisioning files for 802.1x connections when using iwd as a backend.
+      # See https://wiki.gentoo.org/wiki/NetworkManager#Failed_to_add_new_connection:_802.1x_connections_must_have_IWD_provisioning_files
+      # For more information.
     };
     wireless.iwd.settings = {
       Settings = {
