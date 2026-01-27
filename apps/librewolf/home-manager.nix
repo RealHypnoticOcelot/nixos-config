@@ -9,7 +9,7 @@
           {
             Name = "Mojeek";
             Description = "Search the web using Mojeek";
-            URLTemplate = "https://www.mojeek.com/?sumt=0&theme=dark&sumb=0&q={searchTerms}";
+            URLTemplate = "https://www.mojeek.com/search?q={searchTerms}&theme=dark&sumt=0&sumb=0";
             Method = "POST";
             IconURL = "https://www.mojeek.com/favicon.png";
           }
@@ -26,7 +26,7 @@
           "DuckDuckGo"
           "Wikipedia (en)"
         ];
-        Default = "Startpage";
+        Default = "Mojeek";
       };
       ExtensionSettings = {
         "uBlock0@raymondhill.net" = { # uBlock Origin
