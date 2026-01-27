@@ -248,4 +248,9 @@
       ../apps/wgcf/home-manager.nix
     ];
   };
+  warp-wireguard = {
+    system = [
+      ../modules/common/networking/warp-wireguard.nix
+    ];
+  };
 }

@@ -5,12 +5,6 @@
 
   programs.git = {
     enable = true;
-    settings = {
-      user = {
-        name = config.sops.secrets.git_username.path;
-        email = config.sops.secrets.git_email.path;
-      };
-    };
   };
 
   home = {

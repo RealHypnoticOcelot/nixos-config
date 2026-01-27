@@ -41,4 +41,12 @@
       # Funny business with escaping
     };
   };
+  programs.git = {
+    settings = {
+      user = {
+        name = "HypnoticOcelot";
+        email = "57046530+RealHypnoticOcelot@users.noreply.github.com";
+      };
+    };
+  }
 }
