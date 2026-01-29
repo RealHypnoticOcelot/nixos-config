@@ -40,6 +40,9 @@
       command = "\"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && brightnessctl -d 'platform::micmute' s \\$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 1 || echo 0)\"";
       # Funny business with escaping
     };
+    configFile = {
+      "services/plasma-manager-commands.desktop".mute-microphone = "Microphone Mute";
+    }
   };
   programs.git = {
     settings = {

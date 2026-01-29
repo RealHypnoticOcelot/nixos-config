@@ -13,5 +13,8 @@
       key = "Ctrl+Space";
       command = "vicinae toggle";
     };
+    configFile = {
+      "services/plasma-manager-commands.desktop".vicinae = "Ctrl+Space";
+    };
   };
 }

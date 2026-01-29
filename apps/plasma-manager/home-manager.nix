@@ -39,6 +39,18 @@
             name = "org.kde.plasma.marginsseparator";
           }
           {
+            systemTray.items = {
+              # Explicitly show
+              shown = [
+                #
+              ];
+              # Explicitly hide
+              hidden = [
+                #
+              ];
+            };
+          }
+          {
             name = "org.kde.plasma.battery";
             config = {
               General = {
@@ -47,21 +59,16 @@
             };
           }
           {
-            systemTray.items = {
-              # Explicitly show
-              shown = [
-                "org.kde.plasma.battery"
-                "org.kde.plasma.clipboard"
-                "org.kde.plasma.networkmanagement"
-                "org.kde.plasma.volume"
-                "org.kde.plasma.brightness"
-                "org.kde.kdeconnect"
-              ];
-              # Explicitly hide
-              hidden = [
-                #
-              ];
-            };
+            name = "org.kde.plasma.networkmanagement";
+          }
+          {
+            name = "org.kde.plasma.volume";
+          }
+          {
+            name = "org.kde.plasma.brightness";
+          }
+          {
+            name = "org.kde.plasma.clipboard";
           }
           {
             digitalClock = {
@@ -75,6 +82,9 @@
     powerdevil = {
       battery.dimDisplay.idleTimeout = 900; # In seconds
       battery.turnOffDisplay.idleTimeout = 1800; # In seconds
+    };
+    configFile = {
+      klipperrc.General.MaxClipItems = 2048; # Maximum 2048
     };
   };
 }
